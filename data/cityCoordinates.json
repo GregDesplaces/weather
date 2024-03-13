@@ -1,0 +1,38 @@
+{
+    "saint-etienne-42": {
+        "lat": 45.4397,
+        "lng": 4.3872
+    },
+    "lyon": {
+        "lat": 45.75,
+        "lng": 4.85
+    },
+    "yssingeaux": {
+        "lat": 45.1433,
+        "lng": 4.125
+    },
+    "puy-en-velay": {
+        "lat": 45.0433,
+        "lng": 3.885
+    },
+    "firminy": {
+        "lat": 45.3914,
+        "lng": 4.2861
+    },
+    "saint-chamond": {
+        "lat": 45.4778,
+        "lng": 4.515
+    },
+    "montbrison": {
+        "lat": 45.6,
+        "lng": 4.0667
+    },
+    "roanne": {
+        "lat": 46.0333,
+        "lng": 4.0667
+    },
+    "saint-just-saint-rambert": {
+        "lat": 45.5167,
+        "lng": 4.3
+    }
+}

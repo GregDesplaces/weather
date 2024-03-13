@@ -1,17 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import './style.scss'
-import createMap from './components/createMap.js'
+import createMap from './components/map.js'
+
+createMap('map');
 
 
-
-const buttons = document.querySelectorAll('.btn');
-createMap('map')
-
-
+/**
+ * Cette partie de code est commentée, car elle est remplacée par le code ci-dessus,
+ * elle utilisait les boutons pour afficher les données météo
+ */
+//const buttons = document.querySelectorAll('.btn');
 // for (const button of buttons) {
 //   button.addEventListener('click', async function() {
-//     // je recupère la valeur de l'argument data-city
+//     // je récupère la valeur de l'argument data-city
 //     const response = await useFetchWeather(this.dataset.city)
 //     displayWeatherCard(response)
 //   })

@@ -1,71 +1,71 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Weather</title>
-  </head>
-  <body data-bs-theme="dark">
-    <!-- Boutons pour les requetes -->
-    <div class="bg-body-tertiary vh-100">
+</head>
+<body data-bs-theme="dark">
+<!-- Boutons pour les requetes -->
+<div class="bg-body-tertiary vh-100">
 
-        <div id="map" class="mb-2"></div>
+    <!-- La zone d'injection de la carte -->
+    <div id="map" class="mb-2"></div>
 
-<!--        <div class="btn btn-primary me-2" data-city="paris">Paris</div>-->
-<!--        <div class="btn btn-primary me-2" data-city="saint-just-saint-rambert">Saint-Just</div>-->
-<!--        <div class="btn btn-primary me-2" data-city="marseille">Marseille</div>-->
-<!--        <div class="btn btn-primary" data-city="montbrison">Montbrison</div>-->
+    <!-- Les boutons originels -->
+    <!--        <div class="btn btn-primary me-2" data-city="paris">Paris</div>-->
+    <!--        <div class="btn btn-primary me-2" data-city="saint-just-saint-rambert">Saint-Just</div>-->
+    <!--        <div class="btn btn-primary me-2" data-city="marseille">Marseille</div>-->
+    <!--        <div class="btn btn-primary" data-city="montbrison">Montbrison</div>-->
 
+    <!-- Le rendu de la meteo -->
+    <section id="weather-result" class="d-none">
+        <div class="container py-5 h-100">
 
-
-      <section id="weather-result" class="d-none">
-          <div class="container py-5 h-100">
-      
             <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-md-8 col-lg-6 col-xl-4">
-      
-                <div class="card" style="color: #a7b1c5; border-radius: 35px;">
-                  <div class="card-body p-4">
-                    <!-- TOP -->
-                    <div id="top" class="d-flex">
-                      <h6 class="flex-grow-1">Warsaw</h6>
-                      <h6>15:07</h6>
-                    </div>
-                    <!-- CENTER -->
-                    <div id="center" class="d-flex flex-column text-center mt-5 mb-4">
-                      <h6 class="display-4 mb-0 font-weight-bold" style="color: #96a3be;"> 13°C </h6>
-                      <span class="small" style="color: #868B94">Stormy</span>
-                    </div>
-                    <!-- BOTTOM -->
-                    <div id="bottom" class="d-flex align-items-center">
-                      <div class="flex-grow-1" style="font-size: 1rem;">
-                        <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> 40 km/h
+                <div class="col-md-8 col-lg-6 col-xl-4">
+
+                    <div class="card" style="color: #a7b1c5;">
+                        <div class="card-body p-4">
+                            <!-- TOP -->
+                            <div id="top" class="d-flex">
+                                <h6 class="flex-grow-1">Warsaw</h6>
+                                <h6>15:07</h6>
+                            </div>
+                            <!-- CENTER -->
+                            <div id="center" class="d-flex flex-column text-center mt-5 mb-4">
+                                <h6 class="display-4 mb-0 font-weight-bold" style="color: #96a3be;"> 13°C </h6>
+                                <span class="small" style="color: #868B94">Stormy</span>
+                            </div>
+                            <!-- BOTTOM -->
+                            <div id="bottom" class="d-flex align-items-center">
+                                <div class="flex-grow-1" style="font-size: 1rem;">
+                                    <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> 40 km/h
                           </span></div>
-                        <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> 84% </span>
+                                    <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> 84% </span>
+                                    </div>
+                                    <div><i class="fas fa-tachometer-alt fa-fw" style="color: #868B94;"></i> <span
+                                            class="ms-1"> 0.2h </span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
+                                         width="100px" alt="Icon de la condition actuelle">
+                                </div>
+                            </div>
+
                         </div>
-                        <div><i class="fas fa-tachometer-alt fa-fw" style="color: #868B94;"></i> <span class="ms-1"> 0.2h </span>
-                        </div>
-                      </div>
-                      <div>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
-                          width="100px">
-                      </div>
                     </div>
-      
-                  </div>
+
                 </div>
-      
-              </div>
             </div>
-      
-          </div>
-      </section>
-    </div>
+
+        </div>
+    </section>
+</div>
 
 
-
-
-    <script type="module" src="/main.js"></script>
-  </body>
+<script type="module" src="/main.js"></script>
+</body>
 </html>
