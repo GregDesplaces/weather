@@ -19,6 +19,7 @@ export async function useLocation() {
                 (position) => {
                     // Si la géolocalisation est prise en charge et autorisée, la promesse se résout avec les coordonnées de l'utilisateur
                     resolve({
+                        isGeolocationAvailable: true,
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     });
@@ -26,13 +27,21 @@ export async function useLocation() {
                 (error) => {
                     // Si la géolocalisation n'est pas autorisée par l'utilisateur, la promesse se résout avec des coordonnées par défaut
                     console.log('La géolocalisation n\'est pas prise en charge ou autorisée par l\'utilisateur.', error);
-                    resolve(INITIAL_LOCATION);
+                    resolve({
+                        isGeolocationAvailable: false,
+                        lat: INITIAL_LOCATION.lat,
+                        lng: INITIAL_LOCATION.lng
+                    });
                 }
             );
         } else {
             // Si la géolocalisation n'est pas prise en charge par le navigateur, la promesse se résout avec des coordonnées par défaut
             console.log('La géolocalisation n\'est pas prise en charge par ce navigateur.');
-            resolve(INITIAL_LOCATION);
+            resolve({
+                isGeolocationAvailable: false,
+                lat: INITIAL_LOCATION.lat,
+                lng: INITIAL_LOCATION.lng
+            });
         }
     });
 }
