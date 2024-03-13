@@ -13,7 +13,7 @@
  * @returns {HTMLDivElement} - L'élément de la carte contenant les données météorologiques, cloné pour réutilisation.
  */
 export function displayWeatherCard(datas) {
-    console.log(datas);
+    // console.log(datas);
 
     const container = document.querySelector('#weather-result');
     const card = container.querySelector('#weather-result .card');
@@ -21,19 +21,34 @@ export function displayWeatherCard(datas) {
     const date = container.querySelector('#top h6:last-child');
     const temp = container.querySelector('#center h6');
     const condition = container.querySelector('#center span');
-    const wind = container.querySelector('#bottom i.fa-wind').nextElementSibling;
-    const humidity = container.querySelector('#bottom i.fa-tint').nextElementSibling;
-    const pressure = container.querySelector('#bottom i.fa-tachometer-alt').nextElementSibling;
+    const wind = container.querySelector('#bottom i.fa-wind');
+    const humidity = container.querySelector('#bottom i.fa-tint');
+    const pressure = container.querySelector('#bottom i.fa-tachometer-alt');
     const img = container.querySelector('#bottom img');
 
+    // Je fixe une taille au conteneur
+    card.firstElementChild.style.width = '300px';
+    // J'ajoute la classe 'small' à certains éléments pour les rendre plus petits
+    // date.classList.add('small');
+    wind.classList.add('small');
+    wind.nextElementSibling.classList.add('small');
+    humidity.classList.add('small');
+    humidity.nextElementSibling.classList.add('small');
+    pressure.classList.add('small');
+    pressure.nextElementSibling.classList.add('small');
+
+
     city.textContent = datas.city_info.name;
-    date.innerText = datas.current_condition.date;
+    // J'enlève le .2024 pour la date
+    date.innerText = datas.current_condition.date.slice(0, -5).replace(/\./g, '/');
     temp.textContent = datas.current_condition.tmp + '°C';
     condition.textContent = datas.current_condition.condition;
-    wind.textContent = `${datas.current_condition.wnd_spd} km/h | ${datas.current_condition.wnd_dir}`;
-    humidity.textContent = datas.current_condition.humidity + '%';
-    pressure.textContent = datas.current_condition.pressure + 'hPa';
+    wind.nextElementSibling.textContent = `${datas.current_condition.wnd_spd} km/h | ${datas.current_condition.wnd_dir}`;
+    humidity.nextElementSibling.textContent = datas.current_condition.humidity + '%';
+    pressure.nextElementSibling.textContent = datas.current_condition.pressure + 'hPa';
     img.src = datas.current_condition.icon_big;
+
+
 
     container.classList.remove('d-none');
 
