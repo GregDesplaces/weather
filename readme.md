@@ -36,7 +36,7 @@ Pour lancer l'application en local, exécutez `npm run dev` dans le terminal. L'
 
 ## Version en Production
 
-La version d'exemple en production de l'application est déployée à l'adresse suivante : [https://dwwm.gregdesplaces.com](https://dwwm.gregdesplaces.com)
+La version d'exemple en production de l'application est déployée à l'adresse suivante : [https://dwwm.desplaces.net](https://dwwm.desplaces.net)
 
 ## Licence
 
