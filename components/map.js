@@ -1,9 +1,30 @@
 import 'leaflet/dist/leaflet.css';
-import L from "leaflet";
 import { useLocation } from "../services/useLocation.js";
 import cityCoordinates from "../data/cityCoordinates.json";
 import { useFetchWeather } from "../services/useFetchWeather.js";
 import { displayWeatherCard } from "./weatherCard.js";
+import L from "leaflet";
+
+
+// Répare les icônes de marqueur Leaflet
+// @link https://cescobaz.com/2023/06/14/setup-leaflet-with-svelte-and-vite/
+// Import the necessary marker images from the Leaflet package.
+import markerIconUrl from "leaflet/dist/images/marker-icon.png";
+import markerIconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
+import markerShadowUrl from "leaflet/dist/images/marker-shadow.png";
+
+/**
+ * Ce bloc de code corrige les icônes de marqueur Leaflet.
+ *
+ * Les icônes de marqueur par défaut de Leaflet ne sont pas correctement chargées lors du build.
+ * Pour corriger cela, j'importe manuellement les images de marqueur et les définissons comme icônes de marqueur par défaut.
+ *
+ * @see {@link https://cescobaz.com/2023/06/14/setup-leaflet-with-svelte-and-vite/}
+ */
+L.Icon.Default.prototype.options.iconUrl = markerIconUrl; // Set the default marker icon URL.
+L.Icon.Default.prototype.options.iconRetinaUrl = markerIconRetinaUrl; // Set the default marker icon URL for Retina displays.
+L.Icon.Default.prototype.options.shadowUrl = markerShadowUrl; // Set the default marker shadow URL.
+L.Icon.Default.imagePath = ""; // Set the default image path to an empty string to prevent Leaflet from adding a prefix to the image path.
 
 /**
  * Cette fonction crée une carte Leaflet et l'ajoute à la div avec l'ID spécifié.
@@ -23,11 +44,16 @@ import { displayWeatherCard } from "./weatherCard.js";
 export default async function createMap(id) {
 	const location = await useLocation();
 
-	const map = L.map(id).setView([location.lat, location.lng], 10);
+	// Je zoome à 13 si la géolocalisation est activée
+	let zoom = (location.isGeolocationAvailable)  ? 12 : 9;
+
+	const map = L.map(id).setView([location.lat, location.lng], zoom);
 
 	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
+
+
 
 
 	for (const city in cityCoordinates) {
