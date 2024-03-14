@@ -12,7 +12,7 @@ import { INITIAL_LOCATION }  from "../config/default.js";
  * L'objet a la forme { lat: number, lng: number }.
  * Si la géolocalisation n'est pas prise en charge ou autorisée, la promesse se résout avec des coordonnées par défaut.
  */
-export async function useLocation() {
+export function useLocation() {
     return new Promise(function (resolve) {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
