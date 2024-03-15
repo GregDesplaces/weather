@@ -1,12 +1,20 @@
 # Projet d'Utilisation d'une API et de la Librairie Leaflet
 
-Ce projet est le résultat d'un travail pratique (TP) sur l'utilisation d'une API et de la librairie Leaflet pour des apprendre le JavaScript. Il a été développé dans le cadre de la formation DWWM.
+Ce projet est le résultat d'un travail pratique (TP) sur l'utilisation d'une API et de la librairie [Leaflet](https://leafletjs.com/) pour apprendre le JavaScript. Il a été développé dans le cadre de la formation DWWM.
 
 ## Présentation
 
-Le projet est une application web qui exploite une [API](https://www.prevision-meteo.ch/services/) pour obtenir des données météorologiques. Ces données sont ensuite visualisables en cliquant sur des marqueurs insérés dans une carte créée avec [Leaflet](https://leafletjs.com/)
+Le projet est une application web qui exploite l'[API de prévision météo suisse](https://www.prevision-meteo.ch/services/) pour obtenir des données météorologiques. Ces données sont ensuite visualisables en cliquant sur des marqueurs insérés dans une carte créée avec [Leaflet](https://leafletjs.com/)
+
+### Utilisation de Vitejs
 
 L'application est construite avec [ViteJS](https://vitejs.dev/), un outil de build qui offre une expérience de développement rapide et performante.
+
+``` npm create vite@latest ```
+
+La ligne de commande ci-dessus permet de créer un nouveau projet ViteJS. Il faudra répondre à quelques questions pour configurer le projet.
+
+### Utilisation des fonctions asynchrones et des promesses
 
 Un aspect important du projet est l'utilisation de fonctions asynchrones et de promesses pour gérer les requêtes à l'API. Voici un exemple de fonction asynchrone qui utilise une promesse pour récupérer des données de l'API :
 
@@ -22,6 +30,22 @@ async function fetchData(url) {
 }
 ```
 
+La fonction `fetchData` utilise le mot-clé `async` pour indiquer qu'elle est asynchrone. Elle utilise ensuite le mot-clé `await` pour attendre que la promesse retournée par `fetch` soit résolue. Si une erreur se produit, la fonction `catch` est appelée pour la gérer.
+
+### Utilisation de Leaflet
+
+La librairie Leaflet est utilisée pour créer une carte interactive qui affiche les markers. Voici un exemple de code qui crée une carte Leaflet et ajoute un marqueur à celle-ci :
+
+```javascript
+let mymap = L.map('mapid').setView([51.505, -0.09], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+}).addTo(mymap);
+L.marker([51.5, -0.09]).addTo(mymap).bindPopup('A pretty CSS3 popup.').openPopup();
+```
+
+La fonction `L.map` crée une nouvelle carte Leaflet et la fonction `L.tileLayer` ajoute une couche de tuiles OpenStreetMap à la carte. Enfin, la fonction `L.marker` ajoute un marqueur à la carte.
+
 ## Installation
 
 Pour installer le projet en local, suivez les étapes suivantes :
@@ -32,7 +56,14 @@ Pour installer le projet en local, suivez les étapes suivantes :
 
 ## Utilisation
 
-Pour lancer l'application en local, exécutez `npm run dev` dans le terminal. L'application sera accessible à l'adresse `http://localhost:5173`.
+Pour lancer l'application en local, exécutez 
+
+```
+npm install
+npm run dev
+```
+
+Le commandes ci-dessus permettent d'installer les dépendances et de lancer l'application en mode développement. L'application sera accessible à l'adresse `http://localhost:5173`.
 
 ## Version en Production
 
